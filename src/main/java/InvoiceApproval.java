@@ -5,3 +5,7 @@ public class InvoiceApproval {
         return "Auto-Approved";
     }
 }
+
+// Add a simple print statement inside a method or test, for example:
+
+System.out.println("Test change to verify Jenkins build!");
