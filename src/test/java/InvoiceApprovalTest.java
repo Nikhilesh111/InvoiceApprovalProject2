@@ -51,38 +51,59 @@
 //     }
 // }
 
-import static org.junit.Assert.assertEquals;
+// import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.Collection;
+// import java.util.Arrays;
+// import java.util.Collection;
 
+// import org.junit.Test;
+// import org.junit.runner.RunWith;
+// import org.junit.runners.Parameterized;
+
+// @RunWith(Parameterized.class)
+// public class InvoiceApprovalTest {
+
+//     private double amount;
+//     private String expectedResult;
+
+//     public InvoiceApprovalTest(double amount, String expectedResult) {
+//         this.amount = amount;
+//         this.expectedResult = expectedResult;
+//     }
+
+//     @Parameterized.Parameters
+//     public static Collection<Object[]> data() {
+//         return Arrays.asList(new Object[][] {
+//                 { 20000.0, "Requires Manager Approval" },
+//                 { -100.0, "Reject: Invalid amount" },
+//                 { 5000.0, "Auto-Approved" }
+//         });
+//     }
+
+//     @Test
+//     public void testApproveInvoice() {
+//         String result = InvoiceApproval.approveInvoice(amount);
+//         assertEquals(expectedResult, result);
+//     }
+// }
+
+import static org.junit.Assert.*;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
-@RunWith(Parameterized.class)
 public class InvoiceApprovalTest {
 
-    private double amount;
-    private String expectedResult;
-
-    public InvoiceApprovalTest(double amount, String expectedResult) {
-        this.amount = amount;
-        this.expectedResult = expectedResult;
-    }
-
-    @Parameterized.Parameters
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-                { 20000.0, "Requires Manager Approval" },
-                { -100.0, "Reject: Invalid amount" },
-                { 5000.0, "Auto-Approved" }
-        });
+    @Test
+    public void testNegativeAmount() {
+        assertEquals("Reject: Invalid amount", InvoiceApproval.approveInvoice(-100));
     }
 
     @Test
-    public void testApproveInvoice() {
-        String result = InvoiceApproval.approveInvoice(amount);
-        assertEquals(expectedResult, result);
+    public void testAmountOver10000() {
+        assertEquals("Requires Manager Approval", InvoiceApproval.approveInvoice(15000));
+    }
+
+    @Test
+    public void testAmountUnder10000() {
+        assertEquals("Auto-Approved", InvoiceApproval.approveInvoice(5000));
     }
 }

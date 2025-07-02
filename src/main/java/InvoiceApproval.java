@@ -35,7 +35,7 @@ public class InvoiceApproval {
         logger.info("Approving invoice for amount: " + amount);
 
         if (amount < 0) {
-            logger.warning("Rejecting invoice due to invalid amount");
+            logger.warning("Rejecting invoice due to invalid amountssss");
             return "Reject: Invalid amount";
         }
         if (amount > 10000) {
