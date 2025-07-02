@@ -556,3 +556,80 @@
 // }
 // }
 // }
+
+// package com.example;
+
+// import org.junit.After;
+// import org.junit.Before;
+// import org.junit.Test;
+// import org.openqa.selenium.By;
+// import org.openqa.selenium.WebDriver;
+// import org.openqa.selenium.chrome.ChromeDriver;
+// import org.openqa.selenium.support.ui.WebDriverWait;
+// import org.openqa.selenium.support.ui.ExpectedConditions;
+
+// import java.time.Duration;
+
+// import static org.junit.Assert.*;
+
+// public class InvoiceApprovalSeleniumTest {
+// private WebDriver driver;
+// private WebDriverWait wait;
+
+// // Ensure this path matches the actual location of your invoiceForm.html file
+// private static final String INVOICE_FORM_URL =
+// "file:///C:/Users/HI/OneDrive/Desktop/InvoiceApprovalProject2/src/test/java/resources/invoiceForm.html";
+
+// @Before
+// public void setUp() {
+// // ✅ Set the path to your ChromeDriver executable
+// System.setProperty("webdriver.chrome.driver",
+// "C:\\Users\\HI\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
+
+// driver = new ChromeDriver();
+// wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+// }
+
+// @Test
+// public void testInvoiceFormAutoApproved() {
+// driver.get(INVOICE_FORM_URL);
+// wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("amount")));
+// driver.findElement(By.id("amount")).sendKeys("5000");
+// driver.findElement(By.id("submitBtn")).click();
+// wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
+// String result = driver.findElement(By.id("result")).getText();
+// assertEquals("Auto-Approved", result);
+// }
+
+// @Test
+// public void testInvoiceFormManagerApproval() {
+// driver.get(INVOICE_FORM_URL);
+// wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("amount")));
+// driver.findElement(By.id("amount")).sendKeys("15000");
+// driver.findElement(By.id("submitBtn")).click();
+// wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
+// String result = driver.findElement(By.id("result")).getText();
+// assertEquals("Requires Manager Approval", result);
+// }
+
+// @Test
+// public void testInvoiceFormReject() {
+// driver.get(INVOICE_FORM_URL);
+// wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("amount")));
+// driver.findElement(By.id("amount")).sendKeys("-100");
+// driver.findElement(By.id("submitBtn")).click();
+// wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
+// String result = driver.findElement(By.id("result")).getText();
+// assertEquals("Reject: Invalid amount", result);
+// }
+
+// @After
+// public void tearDown() throws InterruptedException {
+// if (driver != null) {
+// System.out.println("Tests complete. Browser will remain open for 30 seconds
+// for debugging...");
+// Thread.sleep(30000); // Wait 30 seconds before closing the browser
+// driver.quit();
+// }
+// }
+// }
