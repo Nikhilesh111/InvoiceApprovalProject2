@@ -622,15 +622,14 @@ public class InvoiceApprovalSeleniumTest {
         assertEquals("Reject: Invalid amount", result);
     }
 
-@After
-public void tearDown() throws InterruptedException {
-if (driver != null) {
-System.out.println("Tests complete. Browser will remain open for 30 seconds
-for debugging...");
-Thread.sleep(10000); // Wait 30 seconds before closing the browser
-driver.quit();
-}
-}
+    @After
+    public void tearDown() throws InterruptedException {
+        if (driver != null) {
+            System.out.println("Tests complete. Browser will remain open for 30 seconds for debugging...");
+            Thread.sleep(10000); // Wait 30 seconds before closing the browser
+            driver.quit();
+        }
+    }
 }
 
 // import org.junit.After;
