@@ -593,7 +593,7 @@ public class InvoiceApprovalSeleniumTest {
     public void testInvoiceFormAutoApproved() {
         driver.get(INVOICE_FORM_URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("amount")));
-        driver.findElement(By.id("amount")).sendKeys("5000");
+        driver.findElement(By.id("amount")).sendKeys("5009");
         driver.findElement(By.id("submitBtn")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
         String result = driver.findElement(By.id("result")).getText();
@@ -604,7 +604,7 @@ public class InvoiceApprovalSeleniumTest {
     public void testInvoiceFormManagerApproval() {
         driver.get(INVOICE_FORM_URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("amount")));
-        driver.findElement(By.id("amount")).sendKeys("15000");
+        driver.findElement(By.id("amount")).sendKeys("1500000");
         driver.findElement(By.id("submitBtn")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("result")));
         String result = driver.findElement(By.id("result")).getText();
@@ -626,7 +626,7 @@ public class InvoiceApprovalSeleniumTest {
     public void tearDown() throws InterruptedException {
         if (driver != null) {
             System.out.println("Tests complete. Browser will remain open for 30 seconds for debugging...");
-            Thread.sleep(30000); // Wait 30 seconds before closing the browser
+            Thread.sleep(10000); // Wait 30 seconds before closing the browser
             driver.quit();
         }
     }
